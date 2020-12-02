@@ -60,47 +60,71 @@ public class ContactPerson {
 		return person;
 	}
 
-	public void Modify(String name, int info_name) {
+	public void Modify(String name) {
+		for (int i = 0; i < person.size(); i++) {
+			Contacts p = person.get(i);
+			if (name.equals(p.getFirst_name())) {
+				while (true) {
+					System.out.println(
+							"1. First name\n 2.Last name\n 3.Address\n 4. City\n 5. State\n 6. Zip\n 7. Phone number\n 8.Email\n 0. Exit");
+					System.out.println("Enter the information to be edit");
+					int info_name = obj.nextInt();
+					switch (info_name) {
+					case 1:
+						System.out.println("Enter new First Name");
+						p.setFirst_name(obj.next());
+						break;
+					case 2:
+						System.out.println("Enter new Last Name");
+						p.setLast_name(obj.next());
+						break;
+					case 3:
+						System.out.println("Enter new Address");
+						p.setAddress(obj.next());
+						break;
+					case 4:
+						System.out.println("Enter new City");
+						p.setCity(obj.next());
+						break;
+					case 5:
+						System.out.println("Enter new State");
+						p.setState(obj.next());
+						break;
+					case 6:
+						System.out.println("Enter new Zip Code");
+						p.setZip(obj.next());
+						break;
+					case 7:
+						System.out.println("Enter new Phone Number");
+						p.setPhno(obj.next());
+						break;
+					case 8:
+						System.out.println("Enter new Email");
+						p.setEmail(obj.next());
+						break;
+					}
+					if (info_name == 0) {
+						break;
+					}
+				}
+			}
+			if (name.equals(p.getFirst_name()) == false) {
+				System.out.println("No such name");
+			}
+		}
+	}
+
+	public boolean duplicateCheck(String name) {
+		boolean flag = false;
 		for (int i = 0; i < person.size(); i++) {
 			Contacts p = (Contacts) person.get(i);
 			if (name.equals(p.getFirst_name())) {
-				System.out.println("Edit Details");
-				switch (info_name) {
-				case 1:
-					System.out.println("Enter new First Name");
-					p.setFirst_name(obj.next());
-					break;
-				case 2:
-					System.out.println("Enter new Last Name");
-					p.setLast_name(obj.next());
-					break;
-				case 3:
-					System.out.println("Enter new Address");
-					p.setAddress(obj.next());
-					break;
-				case 4:
-					System.out.println("Enter new City");
-					p.setCity(obj.next());
-					break;
-				case 5:
-					System.out.println("Enter new State");
-					p.setState(obj.next());
-					break;
-				case 6:
-					System.out.println("Enter new Zip Code");
-					p.setZip(obj.next());
-					break;
-				case 7:
-					System.out.println("Enter new Phone Number");
-					p.setPhno(obj.next());
-					break;
-				case 8:
-					System.out.println("Enter new Email");
-					p.setEmail(obj.next());
-					break;
-				}
+				flag = true;
+			} else {
+				flag = false;
 			}
 		}
+		return flag;
 	}
 
 	public void remove(String name) {
@@ -112,5 +136,4 @@ public class ContactPerson {
 			}
 		}
 	}
-
 }
