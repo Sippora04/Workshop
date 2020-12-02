@@ -10,6 +10,19 @@ public class Contacts {
 	private String phone_no;
 	private String email;
 
+	public Contacts(String first_name, String last_name, String address, String city, String state, String zip,
+			String phone_no, String email) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone_no = phone_no;
+		this.email = email;
+	}
+
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -74,10 +87,11 @@ public class Contacts {
 		this.email = email;
 	}
 
-	@Override
+	/* @Override
 	public String toString() {
 		return ("First Name : " + first_name + " Last Name " + last_name + "\t" + "Address : " + address + "\t"
 				+ "City : " + city + "\t" + "State : " + state + "\t" + "Zip : " + zip + "\t" + "Phone Number : "
 				+ phone_no + "\t" + "Email : " + email);
 	}
+	*/
 }
