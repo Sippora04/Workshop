@@ -40,8 +40,8 @@ public class AddressBookDict {
 		String cityName = obj.next();
 		List<Contacts> personByCity = new ArrayList<Contacts>();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
-			personByCity = (entry.getValue().getPerson().stream()
-					.filter(Contacts -> Contacts.getState().equals(cityName))).collect(Collectors.toList());
+			personByCity = (entry.getValue().getPerson().stream().filter(c -> c.getCity().equals(cityName)))
+					.collect(Collectors.toList());
 			System.out.println(personByCity);
 		}
 	}
@@ -54,8 +54,8 @@ public class AddressBookDict {
 		String stateName = obj.next();
 		List<Contacts> personByState = new ArrayList<Contacts>();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
-			personByState = (entry.getValue().getPerson().stream()
-					.filter(Contacts -> Contacts.getState().equals(stateName))).collect(Collectors.toList());
+			personByState = (entry.getValue().getPerson().stream().filter(c -> c.getState().equals(stateName)))
+					.collect(Collectors.toList());
 			System.out.println(personByState);
 		}
 	}
