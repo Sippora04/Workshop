@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class ContactPerson {
 	Scanner obj = new Scanner(System.in);
-	private ArrayList<Contacts> person = new ArrayList<Contacts>();;
+	private ArrayList<Contacts> person = new ArrayList<Contacts>();
+	Contacts p;
 
 	public void setPerson(ArrayList<Contacts> person) {
 		this.person = person;
@@ -112,19 +113,6 @@ public class ContactPerson {
 				System.out.println("No such name");
 			}
 		}
-	}
-
-	public boolean duplicateCheck(String name) {
-		boolean flag = false;
-		for (int i = 0; i < person.size(); i++) {
-			Contacts p = (Contacts) person.get(i);
-			if (name.equals(p.getFirst_name())) {
-				flag = true;
-			} else {
-				flag = false;
-			}
-		}
-		return flag;
 	}
 
 	public void remove(String name) {

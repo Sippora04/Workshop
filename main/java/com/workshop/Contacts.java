@@ -86,12 +86,4 @@ public class Contacts {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	/* @Override
-	public String toString() {
-		return ("First Name : " + first_name + " Last Name " + last_name + "\t" + "Address : " + address + "\t"
-				+ "City : " + city + "\t" + "State : " + state + "\t" + "Zip : " + zip + "\t" + "Phone Number : "
-				+ phone_no + "\t" + "Email : " + email);
-	}
-	*/
 }

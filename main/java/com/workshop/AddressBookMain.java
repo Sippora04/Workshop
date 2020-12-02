@@ -3,13 +3,17 @@ package com.workshop;
 import java.util.Scanner;
 
 public class AddressBookMain {
+
 	public static void main(String[] args) {
+
 		System.out.println("Welcome To Address Book Program");
 
 		Scanner obj = new Scanner(System.in);
 		AddressBookDict address = new AddressBookDict();
 		while (true) {
 			System.out.println("Enter 1 to add addressbook");
+			System.out.println("Enter 2 to display address book");
+			System.out.println("Enter 3 to search person on basis of city and state in multiple address book");
 			System.out.println("Enter 0 to exit");
 			int ch1 = obj.nextInt();
 			if (ch1 == 1) {
@@ -53,6 +57,12 @@ public class AddressBookMain {
 						break;
 					}
 				}
+			} else if (ch1 == 2) {
+				address.viewAddressBook();
+			} else if (ch1 == 3) {
+				address.searchAddressBookByCity();
+			} else if (ch1 == 4) {
+				address.searchAddressBookByState();
 			} else {
 				break;
 			}
