@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class ContactPerson {
 	Scanner obj = new Scanner(System.in);
 	private ArrayList<Contacts> person = new ArrayList<Contacts>();
-	Contacts p;
 
 	public void setPerson(ArrayList<Contacts> person) {
 		this.person = person;
@@ -57,7 +56,6 @@ public class ContactPerson {
 			System.out.println("ZIP-" + p1.getZip());
 			System.out.println("Phone Number-" + p1.getPhno());
 			System.out.println("Email-" + p1.getEmail());
-			System.out.println("\n");
 		}
 		return person;
 	}
@@ -69,7 +67,7 @@ public class ContactPerson {
 				while (true) {
 					System.out.println(
 							"1. First name\n 2.Last name\n 3.Address\n 4. City\n 5. State\n 6. Zip\n 7. Phone number\n 8.Email\n 0. Exit");
-					System.out.println("Enter the information to be edited");
+					System.out.println("Enter the info to be modified");
 					int info_name = obj.nextInt();
 					switch (info_name) {
 					case 1:

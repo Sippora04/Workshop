@@ -18,12 +18,12 @@ public class AddressBookMain {
 			System.out.println("Enter 2) display address book");
 			System.out.println("Enter 3) view person contact by city");
 			System.out.println("Enter 4) view person contact by state");
-			System.out.println("Enter 0) exit");
+			System.out.println("Enter 0 to exit");
 			int ch1 = obj.nextInt();
 			if (ch1 == 1) {
+				ContactPerson contactPerson = new ContactPerson();
 				System.out.println("Enter the Address Book Name");
 				String add_book_name = obj.next();
-				ContactPerson contactPerson = new ContactPerson();
 				address.addAddressBook(add_book_name, contactPerson);
 				while (true) {
 					System.out.println("Enter 1 to add details");
@@ -32,6 +32,8 @@ public class AddressBookMain {
 					System.out.println("Enter 4 to delete details of a person");
 					System.out.println("Enter 5 to get persons of same city");
 					System.out.println("Enter 6 to get persons of same State");
+					System.out.println("Enter 7 to get count of person belonging to same city");
+					System.out.println("Enter 8 to get count of person belonging to same state");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter any number for further proceed");
 					int ch = obj.nextInt();
@@ -60,23 +62,35 @@ public class AddressBookMain {
 						String name = obj.next();
 						contactPerson.remove(name);
 					} else if (ch == 5) {
-						System.out.println("Enter the city name: ");
+						System.out.println("Enter the city name");
 						String cityName = obj.next();
 						List<Contacts> personByCity = new ArrayList<Contacts>();
 						personByCity = (contactPerson.getPerson()).stream().filter(c -> c.getCity().equals(cityName))
 								.collect(Collectors.toList());
-						for (Contacts contact : personByCity) {
-							System.out.println(contact.getFirst_name());
+						for (Contacts p : personByCity) {
+							System.out.println(p.getFirst_name());
 						}
 					} else if (ch == 6) {
-						System.out.println("Enter the state name: ");
+						System.out.println("Enter the state name");
 						String stateName = obj.next();
 						List<Contacts> personByState = new ArrayList<Contacts>();
 						personByState = (contactPerson.getPerson()).stream().filter(c -> c.getState().equals(stateName))
 								.collect(Collectors.toList());
-						for (Contacts contact : personByState) {
-							System.out.println(contact.getFirst_name());
+						for (Contacts p : personByState) {
+							System.out.println(p.getFirst_name());
 						}
+					} else if (ch == 7) {
+						System.out.println("Enter the city name");
+						String cityName = obj.next();
+						Long personByCity = (contactPerson.getPerson()).stream()
+								.filter(c -> c.getCity().equals(cityName)).count();
+						System.out.println("No of person in same city : " + personByCity);
+					} else if (ch == 8) {
+						System.out.println("Enter the state name");
+						String stateName = obj.next();
+						Long personByState = (contactPerson.getPerson()).stream()
+								.filter(c -> c.getState().equals(stateName)).count();
+						System.out.println("No of person in same city : " + personByState);
 					} else {
 						break;
 					}

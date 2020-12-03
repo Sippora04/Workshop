@@ -1,13 +1,10 @@
 package com.workshop;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBookDict {
+
 	Scanner obj = new Scanner(System.in);
 
 	private TreeMap<String, ContactPerson> addressBook = new TreeMap<String, ContactPerson>();
@@ -40,8 +37,8 @@ public class AddressBookDict {
 		String cityName = obj.next();
 		List<Contacts> personByCity = new ArrayList<Contacts>();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
-			personByCity = (entry.getValue().getPerson().stream().filter(c -> c.getCity().equals(cityName)))
-					.collect(Collectors.toList());
+			personByCity = (entry.getValue().getPerson().stream()
+					.filter(c -> c.getCity().equals(cityName))).collect(Collectors.toList());
 			System.out.println(personByCity);
 		}
 	}
@@ -54,10 +51,9 @@ public class AddressBookDict {
 		String stateName = obj.next();
 		List<Contacts> personByState = new ArrayList<Contacts>();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
-			personByState = (entry.getValue().getPerson().stream().filter(c -> c.getState().equals(stateName)))
-					.collect(Collectors.toList());
+			personByState = (entry.getValue().getPerson().stream()
+					.filter(c -> c.getState().equals(stateName))).collect(Collectors.toList());
 			System.out.println(personByState);
 		}
 	}
-
 }
