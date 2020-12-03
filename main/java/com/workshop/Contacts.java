@@ -1,6 +1,7 @@
 package com.workshop;
 
 public class Contacts {
+
 	private String first_name;
 	private String last_name;
 	private String address;
@@ -21,6 +22,9 @@ public class Contacts {
 		this.zip = zip;
 		this.phone_no = phone_no;
 		this.email = email;
+	}
+
+	public Contacts() {
 	}
 
 	public String getFirst_name() {
@@ -85,5 +89,11 @@ public class Contacts {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String toString() {
+		return "First Name: " + this.first_name + " Last Name: " + this.last_name + " Address: " + this.address
+				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip + " Phone Number: "
+				+ this.phone_no + " Email: " + this.email;
 	}
 }
