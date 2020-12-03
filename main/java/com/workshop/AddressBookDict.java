@@ -23,7 +23,7 @@ public class AddressBookDict {
 
 	public void viewAddressBook() {
 		if (addressBook.isEmpty()) {
-			System.out.println("addressbook is empty");
+			System.out.println("address book is empty");
 		}
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet())
 			System.out.println("[" + entry.getKey() + ", " + entry.getValue().viewAllContacts() + "]");
@@ -31,28 +31,28 @@ public class AddressBookDict {
 
 	public void searchAddressBookByCity() {
 		if (addressBook.isEmpty()) {
-			System.out.println("addressbook is empty");
+			System.out.println("address book is empty");
 		}
-		System.out.println("Enter the city name: ");
+		System.out.println("Enter the city name");
 		String cityName = obj.next();
 		List<Contacts> personByCity = new ArrayList<Contacts>();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
 			personByCity = (entry.getValue().getPerson().stream()
-					.filter(c -> c.getCity().equals(cityName))).collect(Collectors.toList());
+					.filter(Contacts -> Contacts.getCity().equals(cityName))).collect(Collectors.toList());
 			System.out.println(personByCity);
 		}
 	}
 
 	public void searchAddressBookByState() {
 		if (addressBook.isEmpty()) {
-			System.out.println("addressbook is empty");
+			System.out.println("address book is empty");
 		}
-		System.out.println("Enter the state name: ");
+		System.out.println("Enter the state name");
 		String stateName = obj.next();
 		List<Contacts> personByState = new ArrayList<Contacts>();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
 			personByState = (entry.getValue().getPerson().stream()
-					.filter(c -> c.getState().equals(stateName))).collect(Collectors.toList());
+					.filter(Contacts -> Contacts.getState().equals(stateName))).collect(Collectors.toList());
 			System.out.println(personByState);
 		}
 	}
