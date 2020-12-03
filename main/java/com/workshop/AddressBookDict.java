@@ -2,12 +2,13 @@ package com.workshop;
 
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class AddressBookDict {
 
 	Scanner obj = new Scanner(System.in);
-
+	Logger log = Logger.getLogger(AddressBookDict.class.getName());
 	private TreeMap<String, ArrayList<Contacts>> addressBook = new TreeMap<String, ArrayList<Contacts>>();
 
 	public TreeMap<String, ArrayList<Contacts>> getAddressBookDict() {
@@ -24,17 +25,17 @@ public class AddressBookDict {
 
 	public void viewAddressBook() {
 		if (addressBook.isEmpty()) {
-			System.out.println("address book is empty");
+			log.info("address book is empty");
 		}
 		for (Entry<String, ArrayList<Contacts>> entry : addressBook.entrySet())
-			System.out.println("[" + entry.getKey() + ", " + entry.getValue() + "]");
+			log.info("[" + entry.getKey() + ", " + entry.getValue() + "]");
 	}
 
 	public void searchAddressBookByCity() {
 		if (addressBook.isEmpty()) {
-			System.out.println("address book is empty");
+			log.info("address book is empty");
 		}
-		System.out.println("Enter the city name");
+		log.info("Enter the city name: ");
 		String cityName = obj.next();
 		List<Contacts> personByCity = new ArrayList<Contacts>();
 		for (Entry<String, ArrayList<Contacts>> entry : addressBook.entrySet()) {
@@ -50,9 +51,9 @@ public class AddressBookDict {
 
 	public void searchAddressBookByState() {
 		if (addressBook.isEmpty()) {
-			System.out.println("address book is empty");
+			log.info("address book is empty");
 		}
-		System.out.println("Enter the state name");
+		log.info("Enter the state name");
 		String stateName = obj.next();
 		List<Contacts> personByState = new ArrayList<Contacts>();
 		for (Entry<String, ArrayList<Contacts>> entry : addressBook.entrySet()) {

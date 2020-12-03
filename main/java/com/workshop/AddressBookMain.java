@@ -3,33 +3,36 @@ package com.workshop;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class AddressBookMain {
 
 	public static void main(String[] args) {
+		Logger log = Logger.getLogger(AddressBookMain.class.getName());
 
-		System.out.println("Welcome To Address Book Program");
+		log.info("Welcome To Address Book Program");
 
+		ArrayList<Contacts> addPerson = new ArrayList<>();
 		Scanner obj = new Scanner(System.in);
 		AddressBookDict address = new AddressBookDict();
-		ContactPerson contactPerson = new ContactPerson();
+		ContactPerson contactPerson = new ContactPerson(addPerson);
 		boolean flag = true;
-		while (flag == true) {
-			System.out.println("Enter 1 to add addressbook");
-			System.out.println("Enter 2 to add contact");
-			System.out.println("Enter 3 to view details");
-			System.out.println("Enter 4 to modify details");
-			System.out.println("Enter 5 to delete contact details");
-			System.out.println("Enter 6 to get persons of same city or state");
-			System.out.println("Enter 7 to get count of person belonging to same city or state");
-			System.out.println("Enter 8 to get sorted list of contacts by person name");
-			System.out.println("Enter 9 to get sorted list by city,state or zip");
-			System.out.println("Enter 10 to view all address book details");
-			System.out.println("Enter 11 to display person across address book on basis of city");
-			System.out.println("Enter 12 to display person across address book on basis of state");
-			System.out.println("Enter 0 to exit");
-			System.out.println("Enter any number for further proceed");
+		do {
+			log.info("Enter 1 to add addressbook");
+			log.info("Enter 2 to add contact");
+			log.info("Enter 3 to view details");
+			log.info("Enter 4 to modify details");
+			log.info("Enter 5 to delete contact details");
+			log.info("Enter 6 to get persons of same city or state");
+			log.info("Enter 7 to get count of person belonging to same city or state");
+			log.info("Enter 8 to get sorted list of contacts by person name");
+			log.info("Enter 9 to get sorted list by city,state or zip");
+			log.info("Enter 10 to view all address book details");
+			log.info("Enter 11 to display person across address book on basis of city");
+			log.info("Enter 12 to display person across address book on basis of state");
+			log.info("Enter 0 to exit");
+			log.info("Enter any number for further proceed");
 			int ch1 = obj.nextInt();
 			if (ch1 == 1) {
 				contactPerson.createAddressBook(address);
@@ -82,7 +85,7 @@ public class AddressBookMain {
 			if (ch1 == 0) {
 				flag = false;
 			}
-		}
+		} while (flag != false);
 		obj.close();
 	}
 }
