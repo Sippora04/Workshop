@@ -38,7 +38,7 @@ public class AddressBookDataIntoCSVFile {
 		csvWriter.close();
 	}
 
-	private void readDatatFromCSV() throws IOException, CsvException {
+	public void readDatatFromCSV() throws IOException, CsvException {
 		// TODO Auto-generated method stub
 		Reader r = Files.newBufferedReader(Paths.get(csvFilePath));
 		CSVReader csv_reader = new CSVReader(r);
