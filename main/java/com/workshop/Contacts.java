@@ -2,14 +2,14 @@ package com.workshop;
 
 public class Contacts {
 
-	private String first_name;
-	private String last_name;
-	private String address;
-	private String city;
-	private String state;
-	private String zip;
-	private String phone_no;
-	private String email;
+	public String first_name;
+	public String last_name;
+	public String address;
+	public String city;
+	public String state;
+	public String zip;
+	public String phone_no;
+	public String email;
 	public String addressBookName;
 	public String addressBookType;
 
@@ -105,5 +105,15 @@ public class Contacts {
 				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip + " Phone Number: "
 				+ this.phone_no + " Email: " + this.email + " Address book name" + this.addressBookName + " type"
 				+ addressBookType;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Contacts that = (Contacts) o;
+		return first_name.equals(that.first_name) && address.equals(that.address);
 	}
 }
