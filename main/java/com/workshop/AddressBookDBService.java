@@ -10,6 +10,7 @@ import java.util.List;
 
 public class AddressBookDBService {
 
+	private PreparedStatement ContactDataStatement;
 	private static AddressBookDBService addressBookDBService;
 
 	private AddressBookDBService() {
@@ -30,7 +31,7 @@ public class AddressBookDBService {
 		Connection connection;
 		System.out.println("connecting to database: " + jdbcURL);
 		connection = DriverManager.getConnection(jdbcURL, userName, password);
-		System.out.println("connection successful !!!! " + connection);
+		System.out.println("connection successful !!" + connection);
 		return connection;
 	}
 
@@ -72,4 +73,48 @@ public class AddressBookDBService {
 		}
 		return contactList;
 	}
+
+	public int updateEmployeeData(String name, String address) {
+		return this.updateContactDataUsingPreparedStatement(name, address);
+	}
+
+	private int updateContactDataUsingPreparedStatement(String first_name, String address) {
+		try (Connection connection = addressBookDBService.getConnection();) {
+			String sql = "UPDATE address_book set address=? WHERE first_name=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, address);
+			preparedStatement.setString(2, first_name);
+			int status = preparedStatement.executeUpdate();
+			return status;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public List<Contacts> getcontactData(String name) {
+		List<Contacts> contactList = null;
+		if (this.ContactDataStatement == null)
+			this.prepareStatementForContactData();
+		try {
+			ContactDataStatement.setString(1, name);
+			ResultSet resultSet = ContactDataStatement.executeQuery();
+			contactList = this.getAddressBookData(resultSet);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return contactList;
+	}
+
+	private void prepareStatementForContactData() {
+		// TODO Auto-generated method stub
+		try {
+			Connection connection = addressBookDBService.getConnection();
+			String sql = "SELECT * FROM address_book WHERE first_name=?;";
+			ContactDataStatement = connection.prepareStatement(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
