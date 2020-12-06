@@ -6,10 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
 import java.sql.Statement;
->>>>>>> UC19
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,29 +28,25 @@ public class AddressBookDBService {
 		return addressBookDBService;
 	}
 
-	public Connection getConnection() throws SQLException {
+	public static Connection getConnection() throws SQLException {
 		String jdbcURL = "jdbc:mysql://localhost:3306/addressbook_database?useSSL=false";
 		String userName = "root";
 		String password = "admin123";
 		Connection connection;
 		System.out.println("connecting to database: " + jdbcURL);
 		connection = DriverManager.getConnection(jdbcURL, userName, password);
-<<<<<<< HEAD
-		System.out.println("connection successful !!" + connection);
-=======
-		System.out.println("connection successful. " + connection);
->>>>>>> UC19
+		System.out.println("connection successful !!!! " + connection);
 		return connection;
 	}
 
 	public List<Contacts> readData() {
-		String sql = "SELECT * from address_book;";
+		String sql = "SELECT * FROM address_book; ";
 		return this.getContactDetailsUsingSqlQuery(sql);
 	}
 
 	private List<Contacts> getContactDetailsUsingSqlQuery(String sql) {
 		List<Contacts> ContactList = null;
-		try (Connection connection = addressBookDBService.getConnection();) {
+		try (Connection connection = AddressBookDBService.getConnection();) {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet result = preparedStatement.executeQuery(sql);
 			ContactList = this.getAddressBookData(result);
@@ -91,12 +84,8 @@ public class AddressBookDBService {
 	}
 
 	private int updateContactDataUsingPreparedStatement(String first_name, String address) {
-		try (Connection connection = addressBookDBService.getConnection();) {
-<<<<<<< HEAD
-			String sql = "UPDATE address_book set address=? WHERE first_name=?";
-=======
+		try (Connection connection = AddressBookDBService.getConnection();) {
 			String sql = "UPDATE address_book SET address=? WHERE first_name=?";
->>>>>>> UC19
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, address);
 			preparedStatement.setString(2, first_name);
@@ -123,42 +112,25 @@ public class AddressBookDBService {
 	}
 
 	private void prepareStatementForContactData() {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
 		try {
-			Connection connection = addressBookDBService.getConnection();
-			String sql = "SELECT * FROM address_book WHERE first_name=?;";
-=======
-		try {
-			Connection connection = addressBookDBService.getConnection();
+			Connection connection = AddressBookDBService.getConnection();
 			String sql = "SELECT * FROM address_book WHERE first_name=?; ";
->>>>>>> UC19
 			ContactDataStatement = connection.prepareStatement(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
-=======
->>>>>>> UC19
 	public List<Contacts> getContactForDateRange(LocalDate startDate, LocalDate endDate) {
-		String sql = String.format("SELECT * FROM address_book WHERE date_added between '%s' AND '%s'; ",
+		String sql = String.format("SELECT * FROM address_book WHERE date_added BETWEEN '%s' AND '%s'; ",
 				Date.valueOf(startDate), Date.valueOf(endDate));
 		return this.getContactDetailsUsingSqlQuery(sql);
 	}
 
-<<<<<<< HEAD
-}
->>>>>>> UC18
-=======
 	public Map<String, Integer> getContactByCity() {
-		String sql = "SELECT city, count(first_name) as count FROM address_book GROUP BY city;";
+		String sql = "SELECT city, count(first_name) as count FROM address_book group by city; ";
 		Map<String, Integer> contactByCityMap = new HashMap<>();
-		try (Connection connection = addressBookDBService.getConnection()) {
+		try (Connection connection = AddressBookDBService.getConnection()) {
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery(sql);
 			while (result.next()) {
@@ -172,4 +144,3 @@ public class AddressBookDBService {
 		return contactByCityMap;
 	}
 }
->>>>>>> UC19

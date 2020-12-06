@@ -8,6 +8,7 @@ public class AddressBookService {
 
 	private List<Contacts> contactList;
 	private AddressBookDBService addressBookDBService;
+	private AddressBookDBServiceNew addressBookDBServiceNew;
 	private Map<String, Integer> contactByCity;
 
 	public AddressBookService(List<Contacts> contactList) {
@@ -17,6 +18,7 @@ public class AddressBookService {
 
 	public AddressBookService() {
 		addressBookDBService = AddressBookDBService.getInstance();
+		addressBookDBServiceNew = AddressBookDBServiceNew.getInstance();
 	}
 
 	public List<Contacts> readContactData() {
@@ -25,13 +27,6 @@ public class AddressBookService {
 	}
 
 	public void updateContactDetails(String name, String address) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-=======
->>>>>>> UC18
-=======
->>>>>>> UC19
 		int result = addressBookDBService.updateEmployeeData(name, address);
 		if (result == 0)
 			return;
@@ -43,30 +38,11 @@ public class AddressBookService {
 	private Contacts getContactData(String name) {
 		return this.contactList.stream().filter(c -> c.first_name.equals(name)).findFirst().orElse(null);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> UC18
-=======
-
->>>>>>> UC19
 	public boolean checkConatctDetailsInSyncWithDB(String name) {
 		List<Contacts> contactList = addressBookDBService.getcontactData(name);
 		return contactList.get(0).equals(getContactData(name));
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-	public List<Contacts> readContactDataForDateRange(LocalDate startDate, LocalDate endDate) {
-		// TODO Auto-generated method stub
-		this.contactList = addressBookDBService.getContactForDateRange(startDate, endDate);
-		return contactList;
-	}
->>>>>>> UC18
-=======
 
 	public List<Contacts> readContactDataForDateRange(LocalDate startDate, LocalDate endDate) {
 		this.contactList = addressBookDBService.getContactForDateRange(startDate, endDate);
@@ -77,5 +53,11 @@ public class AddressBookService {
 		this.contactByCity = addressBookDBService.getContactByCity();
 		return contactByCity;
 	}
->>>>>>> UC19
+
+	public void addContactToAddressBook(String firstName, String lastName, String address, String city, String state,
+			String zip, String phoneNumber, String email, String addressBookName, String addressBookType,
+			LocalDate date) {
+		contactList.add(addressBookDBServiceNew.addContact(firstName, lastName, address, city, state, zip, phoneNumber,
+				email, addressBookName, addressBookType, date));
+	}
 }

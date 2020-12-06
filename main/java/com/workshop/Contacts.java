@@ -1,5 +1,7 @@
 package com.workshop;
 
+import java.time.LocalDate;
+
 public class Contacts {
 
 	public String first_name;
@@ -12,6 +14,7 @@ public class Contacts {
 	public String email;
 	public String addressBookName;
 	public String addressBookType;
+	public LocalDate date;
 
 	public Contacts(String first_name, String last_name, String address, String city, String state, String zip,
 			String phone_no, String email) {
@@ -31,6 +34,12 @@ public class Contacts {
 		this(first_name, last_name, address, city, state, zip, phone_no, email);
 		this.addressBookName = addressBookName;
 		this.addressBookType = addressBookType;
+	}
+
+	public Contacts(String first_name, String last_name, String address, String city, String state, String zip,
+			String phone_no, String email, String addressBookName, String addressBookType, LocalDate date) {
+		this(first_name, last_name, address, city, state, zip, phone_no, email, addressBookName, addressBookType);
+		this.date = date;
 	}
 
 	public Contacts() {
