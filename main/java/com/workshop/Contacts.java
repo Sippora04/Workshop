@@ -10,6 +10,8 @@ public class Contacts {
 	private String zip;
 	private String phone_no;
 	private String email;
+	public String addressBookName;
+	public String addressBookType;
 
 	public Contacts(String first_name, String last_name, String address, String city, String state, String zip,
 			String phone_no, String email) {
@@ -22,6 +24,13 @@ public class Contacts {
 		this.zip = zip;
 		this.phone_no = phone_no;
 		this.email = email;
+	}
+
+	public Contacts(String first_name, String last_name, String address, String city, String state, String zip,
+			String phone_no, String email, String addressBookName, String addressBookType) {
+		this(first_name, last_name, address, city, state, zip, phone_no, email);
+		this.addressBookName = addressBookName;
+		this.addressBookType = addressBookType;
 	}
 
 	public Contacts() {
@@ -94,6 +103,7 @@ public class Contacts {
 	public String toString() {
 		return "First Name: " + this.first_name + " Last Name: " + this.last_name + " Address: " + this.address
 				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip + " Phone Number: "
-				+ this.phone_no + " Email: " + this.email;
+				+ this.phone_no + " Email: " + this.email + " Address book name" + this.addressBookName + " type"
+				+ addressBookType;
 	}
 }
