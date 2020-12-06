@@ -1,10 +1,12 @@
 package com.workshop;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,9 +66,10 @@ public class AddressBookDBService {
 				String zip = result.getString("zip");
 				String phoneNumber = result.getString("phone_no");
 				String email = result.getString("email");
-				// String addressBookName = result.getString("address_book_name");
-				// String addressBookType = result.getString("address_book_type");
-				contactList.add(new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email));
+				String addressBookName = result.getString("address_book_name");
+				String addressBookType = result.getString("address_book_type");
+				contactList.add(new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email,
+						addressBookName, addressBookType));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -117,4 +120,14 @@ public class AddressBookDBService {
 		}
 	}
 
+<<<<<<< HEAD
 }
+=======
+	public List<Contacts> getContactForDateRange(LocalDate startDate, LocalDate endDate) {
+		String sql = String.format("SELECT * FROM address_book WHERE date_added between '%s' AND '%s'; ",
+				Date.valueOf(startDate), Date.valueOf(endDate));
+		return this.getContactDetailsUsingSqlQuery(sql);
+	}
+
+}
+>>>>>>> UC18

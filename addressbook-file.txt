@@ -1,2 +1,2 @@
-First Name: Sippora Last Name: Toppo Address: Abc City: Ranchi State: Jhk Zip: 101101 Phone Number: 9800112231 Email: sippora@gmail.com
-First Name: Sabnam Last Name: Bano Address: Civil Lines City: Allahabad State: UP Zip: 123321 Phone Number: 9988001012 Email: farida@yahoo.com
+First Name: Sippora Last Name: Toppo Address: Abc City: Ranchi State: Jhk Zip: 101101 Phone Number: 9800112231 Email: sippora@gmail.com Address book namenull typenull
+First Name: Sabnam Last Name: Bano Address: Civil Lines City: Allahabad State: UP Zip: 123321 Phone Number: 9988001012 Email: farida@yahoo.com Address book namenull typenull

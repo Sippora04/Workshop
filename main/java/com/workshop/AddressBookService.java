@@ -1,5 +1,6 @@
 package com.workshop;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AddressBookService {
@@ -22,7 +23,10 @@ public class AddressBookService {
 	}
 
 	public void updateContactDetails(String name, String address) {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
+=======
+>>>>>>> UC18
 		int result = addressBookDBService.updateEmployeeData(name, address);
 		if (result == 0)
 			return;
@@ -34,9 +38,22 @@ public class AddressBookService {
 	private Contacts getContactData(String name) {
 		return this.contactList.stream().filter(c -> c.first_name.equals(name)).findFirst().orElse(null);
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> UC18
 	public boolean checkConatctDetailsInSyncWithDB(String name) {
 		List<Contacts> contactList = addressBookDBService.getcontactData(name);
 		return contactList.get(0).equals(getContactData(name));
 	}
+<<<<<<< HEAD
+=======
+
+	public List<Contacts> readContactDataForDateRange(LocalDate startDate, LocalDate endDate) {
+		// TODO Auto-generated method stub
+		this.contactList = addressBookDBService.getContactForDateRange(startDate, endDate);
+		return contactList;
+	}
+>>>>>>> UC18
 }
