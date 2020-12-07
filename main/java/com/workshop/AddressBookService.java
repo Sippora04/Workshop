@@ -1,6 +1,7 @@
 package com.workshop;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ public class AddressBookService {
 
 	public AddressBookService(List<Contacts> contactList) {
 		this();
-		this.contactList = contactList;
+		this.contactList = new ArrayList<>(contactList);
 	}
 
 	public AddressBookService() {
@@ -79,10 +80,20 @@ public class AddressBookService {
 		});
 		while (employeeAdditionStatus.containsValue(false)) {
 			try {
-				Thread.sleep(10);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 			}
 		}
 		System.out.println("" + this.contactList);
+	}
+
+	public void addContactToAddressBook(Contacts personInfo) {
+		// TODO Auto-generated method stub
+		contactList.add(personInfo);
+	}
+
+	public long countEntries() {
+		// TODO Auto-generated method stub
+		return contactList.size();
 	}
 }

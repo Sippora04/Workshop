@@ -1,1 +1,40 @@
-[{"first_name":"Sippora","last_name":"Toppo","address":"Abc","city":"Ranchi","state":"Jhk","zip":"123001","phone_no":"9009881019","email":"sippora@gmail.com"},{"first_name":"Veena","last_name":"Khatari","address":"Pqr","city":"Rohtak","state":"Haryana","zip":"123102","phone_no":"7799009801","email":"veena@yahoo.com"}]
+{
+    "address_book": [
+      {
+        "id": 1,
+        "firstName": "Sanna",
+        "lastName": "Toppo",
+        "address": "Bharat Nagar",
+        "city": "Bathinda",
+        "state": "Punjab",
+        "zip": 121001,
+        "phone": 9009001234,
+        "email": "sanna@gmail.com",
+        "addressBookName": "AB_2020",
+        "addressBookType": "family",
+        "date": {
+          "year": 2020,
+          "month": 11,
+          "day": 24
+        }
+      },
+      {
+        "id": 2,
+        "firstName": "Swati",
+        "lastName": "Talware",
+        "address": "Seawoods",
+        "city": "Mumbai",
+        "state": "MH",
+        "zip": 400706,
+        "phone": 6150001119,
+        "email": "swati123@gmail.com",
+        "addressBookName": "AB_2019",
+        "addressBookType": "friend",
+        "date": {
+          "year": 2019,
+          "month": 10,
+          "day": 25
+        }
+      }
+    ]
+  }

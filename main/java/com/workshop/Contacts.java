@@ -1,6 +1,7 @@
 package com.workshop;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Contacts {
 
@@ -15,6 +16,7 @@ public class Contacts {
 	public String addressBookName;
 	public String addressBookType;
 	public LocalDate date;
+	public int id;
 
 	public Contacts(String first_name, String last_name, String address, String city, String state, String zip,
 			String phone_no, String email) {
@@ -40,6 +42,13 @@ public class Contacts {
 			String phone_no, String email, String addressBookName, String addressBookType, LocalDate date) {
 		this(first_name, last_name, address, city, state, zip, phone_no, email, addressBookName, addressBookType);
 		this.date = date;
+	}
+
+	public Contacts(int id, String first_name, String last_name, String address, String city, String state, String zip,
+			String phone_no, String email, String addressBookName, String addressBookType, LocalDate date) {
+		this(first_name, last_name, address, city, state, zip, phone_no, email, addressBookName, addressBookType);
+		this.date = date;
+		this.id = id;
 	}
 
 	public Contacts() {
@@ -114,6 +123,11 @@ public class Contacts {
 				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip + " Phone Number: "
 				+ this.phone_no + " Email: " + this.email + " Address book name" + this.addressBookName + " type"
 				+ addressBookType;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(first_name, last_name, address, city, state, zip, phone_no, email, addressBookName, date);
 	}
 
 	@Override
