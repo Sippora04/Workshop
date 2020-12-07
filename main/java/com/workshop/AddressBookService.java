@@ -1,6 +1,7 @@
 package com.workshop;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,5 +60,29 @@ public class AddressBookService {
 			LocalDate date) {
 		contactList.add(addressBookDBServiceNew.addContact(firstName, lastName, address, city, state, zip, phoneNumber,
 				email, addressBookName, addressBookType, date));
+	}
+
+	public void addEmployeeToPayrollWithThreads(List<Contacts> contactList) {
+		Map<Integer, Boolean> employeeAdditionStatus = new HashMap<>();
+		contactList.forEach(contact -> {
+			Runnable task = () -> {
+				employeeAdditionStatus.put(contact.hashCode(), false);
+				System.out.println("Contact being added : " + Thread.currentThread().getName());
+				this.addContactToAddressBook(contact.first_name, contact.last_name, contact.address, contact.city,
+						contact.state, contact.zip, contact.phone_no, contact.email, contact.addressBookName,
+						contact.addressBookType, contact.date);
+				employeeAdditionStatus.put(contact.hashCode(), true);
+				System.out.println("Contact added: " + Thread.currentThread().getName());
+			};
+			Thread thread = new Thread(task, contact.first_name);
+			thread.start();
+		});
+		while (employeeAdditionStatus.containsValue(false)) {
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+			}
+		}
+		System.out.println("" + this.contactList);
 	}
 }
